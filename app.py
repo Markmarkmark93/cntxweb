@@ -25,6 +25,19 @@ with st.sidebar:
         st.markdown(f"[Finviz – {ticker}](https://finviz.com/quote.ashx?t={ticker})")
         st.markdown(f"[TradingView – {ticker}](https://www.tradingview.com/symbols/{ticker})")
         st.markdown(f"[StockAnalysis – {ticker}](https://stockanalysis.com/stocks/{ticker.lower()})")
+                # AlphaSpread – potřebuje burzu v URL; zkusíme ji zjistit a namapovat
+        try:
+            ex_raw = yf.Ticker(ticker).info.get("exchange", "")
+            ex_map = {
+                "NMS": "nasdaq", "NASDAQ": "nasdaq",
+                "NYQ": "nyse",   "NYSE": "nyse",
+                "ASE": "amex",   "AMEX": "amex"
+            }
+            ex_slug = ex_map.get(str(ex_raw).upper(), "nasdaq")
+        except Exception:
+            ex_slug = "nasdaq"
+
+        st.markdown(f"[AlphaSpread – {ticker}](https://www.alphaspread.com/security/{ex_slug}/{ticker.lower()}/valuation)")
         st.markdown("[ChatGPT](https://chat.openai.com) 💬")
 
 # 📋 HLAVNÍ OBSAH
