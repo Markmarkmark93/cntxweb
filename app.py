@@ -46,7 +46,7 @@ def alpha_spread_links(tkr: str):
 if ticker:
     # ... tvoje ostatní odkazy ...
     a_primary, a_backup = alpha_spread_links(ticker)
-    st.markdown(f"[AlphaSpread – {ticker}]({a_primary}) · [🔎 hledat]({a_backup})")
+        st.markdown(f"[AlphaSpread – {ticker}]({a_primary}) · [🔎 hledat]({a_backup})")
         st.markdown("[ChatGPT](https://chat.openai.com) 💬")
 
 # 📋 HLAVNÍ OBSAH
