@@ -38,6 +38,7 @@ with st.sidebar:
             ex_slug = "nasdaq"
 
         st.markdown(f"[AlphaSpread – {ticker}](https://www.alphaspread.com/security/{ex_slug}/{ticker.lower()}/valuation)")
+        st.markdown(f"[OptionCharts.io – {ticker}](https://optioncharts.io/stocks/{ticker.upper()})")
         st.markdown("[ChatGPT](https://chat.openai.com) ☁️")
 # 📋 HLAVNÍ OBSAH
 if selected_view == "📊 Výsledky akcie":
