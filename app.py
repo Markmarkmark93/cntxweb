@@ -1,6 +1,9 @@
 import streamlit as st
 import yfinance as yf
 import requests
+@st.cache_data(ttl=300)
+def get_ticker(ticker):
+    return yf.Ticker(ticker)
 
 # Konfigurace
 st.set_page_config(page_title="ContEX", layout="wide")
@@ -153,7 +156,7 @@ elif selected_view == "🧰 Nástroje":
         default_rev = default_profit = default_mcap = 0.0
         if ticker:
             try:
-                _t = yf.Ticker(ticker)
+                _t = get_ticker(ticker)                
                 _info = _t.info or {}
                 default_rev = float(_info.get("totalRevenue") or 0.0)
                 # netIncomeToCommon bývá dostupnější; fallback na netIncome
